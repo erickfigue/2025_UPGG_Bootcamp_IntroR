@@ -1,5 +1,6 @@
 ---
 title: "UPGG Bootcamp 2025"
+author: "Erick Figueroa-Ildefonso"
 output: html_document
 date: "2025-08-20"
 ---
@@ -46,7 +47,8 @@ key point is that, arithmetic operation will automatically coerce `integer` to `
 
 ```{r}
 x <- as.integer(10)
-typeof(x + 11.5)
+typeof(x) # Will be integer
+typeof(x + 10.0) # Will now be coerced to double
 ```
 
 Examples of operations you can perform on numeric values.
@@ -61,7 +63,7 @@ x * y # multiply
 x / y # divide
 x ** y # exponent
 x^y # exponent
-103 %% 10 # modulo
+x %% y # Modulo
 ```
 
 **Valid variable names** There are some names you ***can't*** use as variable names, and they are
@@ -70,10 +72,9 @@ names that you ***shouldn't*** use.
 1.  Start with letter
 
 ```{r, error=TRUE}
-a.1 <- 1
-x_y <- 2
-2.y <- 3
-_a <- 4
+a.1 <- 5 # Will work
+1.a <- 5 # Will not work
+_a <- 5 # Will not work
 ```
 
 2.  Don't use weird symbols, use `.` or `_`.
@@ -87,8 +88,8 @@ _a <- 4
     -   [Tidyverse's](http://style.tidyverse.org/)
 
 ```{r, error=TRUE}
-myHeight <- "7 ft" # camelCase
-my_weight <- "10 lbs" # snake_case
+myHeightInJanuary <- "7 ft" # camelCase = first letter lowercase rest capitals
+my_head_size <- "10 lbs" # Snake_case = underscores between words, all lowercase
 my.value <- "None"
 my$student <- "xyz" # $ has meaning in R
 my-day <- "sunday" # - is for subtraction
@@ -178,17 +179,19 @@ nchar(name)
 
 Simple strings operations - joining strings using `paste()` and `paste0()` and splitting strings
 using `strsplit()`.
+* `paste()` automatically includes a **separator** (default being a space)
+* `paste0()` doesn't include a separator
 
 ***Check whether or not they know how to see possible options for a function***
 
 ```{r}
 paste(name, "Smith")
+paste("Hello", "World") # returns "Hello World"
 paste("Hello", "World", sep = "_")
 paste0("Hi","My","Name","Is")
 
 strsplit("Hello World", split = " ") # Get a vector of characters
 
-?strsplit
 ```
 
 You cannot combine two data types.
@@ -372,6 +375,9 @@ This is arguably the most useful feature of R in data analyses. There's a reason
 spreadsheets, they portray multi-dimentional data and its relational information between data points
 across columns -- i.e., putting variables from the same observation next to each other.
 
+Think of data frame as like a stack of vectors (each column). To be able to make sense of the data,
+we want to add column names to designate what the values mean.
+
 Creating a data frame
 
 ```{r}
@@ -379,9 +385,6 @@ df <- data.frame(1:5,
                  6:10)
 df
 ```
-
-Think of data frame as like a stack of vectors (each column). To be able to make sense of the data,
-we want to add column names to designate what the values mean.
 
 ```{r}
 names(df)
@@ -472,6 +475,73 @@ mtcars
 iris
 ```
 
+### Tibble
+
+A `tibble` is a Tidyverse's attempt to improve on `data frame`. In general, `data frame` and `tibble` are about equivalent
+in terms of function. For the sake of today and tomorrow's lesson, we'll use `tibble` because any Tidyverse's
+`readr` function would output a `tibble` by default. Don't worry about the differences - they are,
+for the most parts, interchangeable.
+
+You can convert a preexisting data frame into a tibble.
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+my_tib <- as_tibble(mtcars) # Converting a data frame to tibble
+my_tib # looks very similar to data frame
+```
+
+Another way to create a tibble. Key components are column names and values. Each column can only
+contain one data type.
+
+```{r}
+my_tib2 <- tibble(name = c("Josh", "Peter"),
+                  income = c(100000000, 20))
+my_tib2
+```
+
+Conventionally, for data frames and tibbles, each row contains observations, each column contains
+variables, and each cell contains values.
+
+```{r}
+my_tib
+```
+
+Subsetting, same as data frame
+
+```{r}
+tb <- tibble(
+  x = runif(5),
+  y = rnorm(5))
+# Extract by name 1
+tb$x
+# Extract by name 2
+tb[["x"]]
+# Extract by column index 1
+tb[[1]]
+```
+
+```{r}
+# If have time, example of differences between data frame vs tibble
+mtcars[,1]
+as_tibble(mtcars)[,1]
+```
+
+```{r}
+class(tb)
+```
+
+## Tidyverse
+
+What is [Tidyverse](https://www.tidyverse.org/)? Tidyverse is a collection of R packages that had
+been designed and developed for data science. R is not a new language, and Tidyverse's philosophy is
+about reducing redundancy and improving coding style to be cleaner and more intuitive.
+
+Tidyverse is a literal gold mine, and there's no way we're going to cover everything in just a few
+hours! We're going to go through a few functions that are particularly useful and most commonly
+used.
 
 
 
