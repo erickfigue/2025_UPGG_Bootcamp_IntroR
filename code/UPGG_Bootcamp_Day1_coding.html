@@ -359,11 +359,10 @@ display: none;
 <h2>Data structure</h2>
 <div id="refresher-on-data-types" class="section level3">
 <h3>Refresher on Data Types</h3>
-<p>We will do a quick refresher on data types in R which Krista has
-touched on a little bit yesterday. These are basically categories of
-values that computers can read and interpret in different ways. If you
-know other programming languages, these categories tend to overlap,
-though might have different names.</p>
+<p>We will do a quick review on data types in R. These are basically
+categories of values that computers can read and interpret in different
+ways. If you know other programming languages, these categories tend to
+overlap, though might have different names.</p>
 <div id="numeric" class="section level4">
 <h4>1. Numeric</h4>
 <p>Basically, numbers that we know very well. You can perform
@@ -657,8 +656,9 @@ elements within <code>a</code> that is <strong>greater</strong> than
 <pre class="r"><code>a &lt;- runif(20, 1, 100)</code></pre>
 <p>Answer</p>
 <pre class="r"><code>a[a &gt; 30]</code></pre>
-<pre><code>##  [1] 69.30771 56.24790 30.99712 56.88361 90.55966 39.97693 73.49288 43.15234
-##  [9] 86.36033 50.91968 88.55637 60.08835 30.51741 92.29071 51.73576</code></pre>
+<pre><code>##  [1] 36.78779 80.06861 67.76628 61.84879 91.24259 86.43093 92.19406 71.81149
+##  [9] 67.87138 31.66824 48.51418 88.02467 58.09479 40.45528 82.67815 94.70822
+## [17] 59.59065</code></pre>
 </div>
 </div>
 <div id="list" class="section level3">
@@ -824,11 +824,11 @@ fourth &lt;- runif(5, 10, 100)
 df$fourth &lt;- fourth
 df</code></pre>
 <pre><code>##   first.column second.column third   fourth
-## 1            1             6    21 21.81870
-## 2            2             7    22 11.81886
-## 3            3             8    23 60.70536
-## 4            4             9    24 63.51148
-## 5            5            10    25 59.36048</code></pre>
+## 1            1             6    21 40.28164
+## 2            2             7    22 46.62513
+## 3            3             8    23 80.88349
+## 4            4             9    24 87.33586
+## 5            5            10    25 37.57189</code></pre>
 <p>R has some built-in data frames that you can play with.</p>
 <pre class="r"><code>mtcars</code></pre>
 <pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb

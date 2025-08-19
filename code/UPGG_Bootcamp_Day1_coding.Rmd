@@ -13,9 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### Refresher on Data Types
 
-We will do a quick refresher on data types in R which Krista has touched on a little bit yesterday.
-These are basically categories of values that computers can read and interpret in different ways. If
-you know other programming languages, these categories tend to overlap, though might have different
+We will do a quick review on data types in R. These are basically categories of values that computers can read and interpret in different ways. If you know other programming languages, these categories tend to overlap, though might have different
 names.
 
 #### 1. Numeric
