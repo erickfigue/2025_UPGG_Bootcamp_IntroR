@@ -365,71 +365,28 @@ display: none;
 categories of values that computers can read and interpret in different
 ways. If you know other programming languages, these categories tend to
 overlap, though might have different names.</p>
-<div id="numeric" class="section level4">
-<h4>1. Numeric</h4>
+</div>
+<div id="numeric" class="section level3">
+<h3>Numeric</h3>
 <p>Basically, numbers that we know very well. You can perform
 mathematical operations on them. The types of numeric values you are
 going to encounter the most are:</p>
 <p>1a. <code>Double</code> - represent real numbers (whole numbers and
 decimals). It is the default value for whole numbers.</p>
-<blockquote>
-<p>Reminder about shortcut for making new chunk -
-<code>cmd + option + i</code></p>
-</blockquote>
-<pre class="r"><code>typeof(10)</code></pre>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="r"><code>typeof(20.24)</code></pre>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<pre class="r"><code>typeof(pi) # R has built-in constants, e.g., pi</code></pre>
-<pre><code>## [1] &quot;double&quot;</code></pre>
 <p>1b. <code>Integer</code> - represent whole numbers only.</p>
 <p>Whole numbers are defaulted to <code>double</code>. You have to tell
 R explicitly that a value is <code>integer</code>.</p>
-<pre class="r"><code>typeof(as.integer(10))</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
 <p>You are unlikely to come across a case where <code>double</code> and
 <code>integer</code> will make significant changes to your
 code/performance, but it’s good to be aware of the different types of
 numeric values. Another key point is that, arithmetic operation will
 automatically coerce <code>integer</code> to <code>double</code> if
 needs be.</p>
-<pre class="r"><code>x &lt;- as.integer(10)
-typeof(x) # Will be integer</code></pre>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<pre class="r"><code>typeof(x + 10.0) # Will now be coerced to double</code></pre>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<p>Examples of operations you can perform on numeric values.</p>
-<pre class="r"><code>x &lt;- 3 # Reminder about value assignment
-y &lt;- 4
-
-x + y # add</code></pre>
-<pre><code>## [1] 7</code></pre>
-<pre class="r"><code>x - y # subtract</code></pre>
-<pre><code>## [1] -1</code></pre>
-<pre class="r"><code>x * y # multiply</code></pre>
-<pre><code>## [1] 12</code></pre>
-<pre class="r"><code>x / y # divide</code></pre>
-<pre><code>## [1] 0.75</code></pre>
-<pre class="r"><code>x ** y # exponent</code></pre>
-<pre><code>## [1] 81</code></pre>
-<pre class="r"><code>x^y # exponent</code></pre>
-<pre><code>## [1] 81</code></pre>
-<pre class="r"><code>x %% y # Modulo</code></pre>
-<pre><code>## [1] 3</code></pre>
 <p><strong>Valid variable names</strong> There are some names you
 <strong><em>can’t</em></strong> use as variable names, and they are
 names that you <strong><em>shouldn’t</em></strong> use.</p>
 <ol style="list-style-type: decimal">
-<li>Start with letter</li>
-</ol>
-<pre class="r"><code>a.1 &lt;- 5 # Will work
-1.a &lt;- 5 # Will not work
-_a &lt;- 5 # Will not work</code></pre>
-<pre><code>## Error in parse(text = input): &lt;text&gt;:2:3: unexpected symbol
-## 1: a.1 &lt;- 5 # Will work
-## 2: 1.a
-##      ^</code></pre>
-<ol start="2" style="list-style-type: decimal">
+<li><p>Start with letter</p></li>
 <li><p>Don’t use weird symbols, use <code>.</code> or
 <code>_</code>.</p>
 <p>Examples of style guides:</p>
@@ -438,65 +395,20 @@ _a &lt;- 5 # Will not work</code></pre>
 <li><p><a href="http://jef.works/R-style-guide/">Jean Fan’s</a></p></li>
 <li><p><a href="http://style.tidyverse.org/">Tidyverse’s</a></p></li>
 </ul></li>
-</ol>
-<pre class="r"><code>myHeightInJanuary &lt;- &quot;7 ft&quot; # camelCase = first letter lowercase rest capitals
-my_head_size &lt;- &quot;10 lbs&quot; # Snake_case = underscores between words, all lowercase
-my.value &lt;- &quot;None&quot;
-my$student &lt;- &quot;xyz&quot; # $ has meaning in R</code></pre>
-<pre><code>## Error: objeto &#39;my&#39; no encontrado</code></pre>
-<pre class="r"><code>my-day &lt;- &quot;sunday&quot; # - is for subtraction</code></pre>
-<pre><code>## Error: objeto &#39;my&#39; no encontrado</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>DO NOT</strong> use <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">reserved
-words</a></li>
-</ol>
-<pre class="r"><code>TRUE &lt;- FALSE</code></pre>
-<pre><code>## Error in TRUE &lt;- FALSE: lado izquierdo de la asignación inválida (do_set)</code></pre>
-<pre class="r"><code>?reserved</code></pre>
-<pre><code>## starting httpd help server ... done</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Avoid naming variables the same as function names</li>
+<li><p><strong>DO NOT</strong> use <a href="https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html">reserved
+words</a></p></li>
+<li><p>Avoid naming variables the same as function names</p></li>
 </ol>
 </div>
-<div id="logical" class="section level4">
-<h4>2. Logical</h4>
+<div id="logical" class="section level3">
+<h3>Logical</h3>
 <p>Sometimes these values are called <code>boolean</code> in other
 languages. It is common enough in programming that you should know
 about! The only possible logical values are <code>TRUE</code> and
 <code>FALSE</code> – case sensitive!!!</p>
-<pre class="r"><code>typeof(TRUE)</code></pre>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<pre class="r"><code>typeof(FALSE)</code></pre>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<pre class="r"><code>x</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>y</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>x &gt; y</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>x &lt; y</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>x &gt;= y</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>x &lt;= y</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>x == y</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>x != y</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>!(x &gt; y) # same as x &lt;= y</code></pre>
-<pre><code>## [1] TRUE</code></pre>
 <blockquote>
 <p><strong>Problem with numeric data in logical equivalence</strong></p>
 </blockquote>
-<pre class="r"><code>10 == (sqrt(10)^2) # Why does this return FALSE?</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>sqrt(10)^2 # It outputs 10!!</code></pre>
-<pre><code>## [1] 10</code></pre>
-<pre class="r"><code>4 == (sqrt(4)^2) # But why does this work?</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>sqrt(4)^2</code></pre>
-<pre><code>## [1] 4</code></pre>
 <p>Without going into the weed, an irrational number like
 <code>sqrt(10)</code> has infinite decimal points. So, it is impossible
 for R to represent all the digits as it would take an infinite amount of
@@ -505,40 +417,14 @@ represent an irrational value, which makes the term
 <code>(sqrt(10)^2)</code> slightly off from 10.</p>
 <p>To circumvent this limitation, you can test for “near equality” in R
 using a function <code>all.equal()</code>.</p>
-<pre class="r"><code>all.equal(10, sqrt(10)^2) # Yay!</code></pre>
-<pre><code>## [1] TRUE</code></pre>
 <p><strong>Logical operator</strong></p>
-<pre class="r"><code>!TRUE # Not TRUE</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>TRUE &amp; FALSE # TRUE and FALSE</code></pre>
-<pre><code>## [1] FALSE</code></pre>
-<pre class="r"><code>TRUE | FALSE # TRUE or FALSE</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>TRUE | TRUE</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>xor(TRUE, FALSE) # either x or y, but not both</code></pre>
-<pre><code>## [1] TRUE</code></pre>
-<pre class="r"><code>xor(TRUE, TRUE) </code></pre>
-<pre><code>## [1] FALSE</code></pre>
 </div>
-<div id="character-strings" class="section level4">
-<h4>3. Character strings</h4>
+<div id="character-strings" class="section level3">
+<h3>Character strings</h3>
 <p>Characters are created by using the <code>&quot;</code> (double quote) or
 <code>&#39;</code> (single quote) enclosing them.</p>
-<pre class="r"><code>typeof(&#39;abc&#39;)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>typeof(&quot;123&quot;)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code>letters</code></pre>
-<pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
-## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
-<pre class="r"><code>typeof(letters)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
 <p><code>nchar()</code> gives you the number of characters in the
 variable.</p>
-<pre class="r"><code>name &lt;- &quot;Justin&quot;
-nchar(name)</code></pre>
-<pre><code>## [1] 6</code></pre>
 <p>Simple strings operations - joining strings using
 <code>paste()</code> and <code>paste0()</code> and splitting strings
 using <code>strsplit()</code>. * <code>paste()</code> automatically
@@ -546,114 +432,17 @@ includes a <strong>separator</strong> (default being a space) *
 <code>paste0()</code> doesn’t include a separator</p>
 <p><strong><em>Check whether or not they know how to see possible
 options for a function</em></strong></p>
-<pre class="r"><code>paste(name, &quot;Smith&quot;)</code></pre>
-<pre><code>## [1] &quot;Justin Smith&quot;</code></pre>
-<pre class="r"><code>paste(&quot;Hello&quot;, &quot;World&quot;) # returns &quot;Hello World&quot;</code></pre>
-<pre><code>## [1] &quot;Hello World&quot;</code></pre>
-<pre class="r"><code>paste(&quot;Hello&quot;, &quot;World&quot;, sep = &quot;_&quot;)</code></pre>
-<pre><code>## [1] &quot;Hello_World&quot;</code></pre>
-<pre class="r"><code>paste0(&quot;Hi&quot;,&quot;My&quot;,&quot;Name&quot;,&quot;Is&quot;)</code></pre>
-<pre><code>## [1] &quot;HiMyNameIs&quot;</code></pre>
-<pre class="r"><code>strsplit(&quot;Hello World&quot;, split = &quot; &quot;) # Get a vector of characters</code></pre>
-<pre><code>## [[1]]
-## [1] &quot;Hello&quot; &quot;World&quot;</code></pre>
 <p>You cannot combine two data types.</p>
-<pre class="r"><code>1 + &quot;Hi&quot;</code></pre>
-<pre><code>## Error in 1 + &quot;Hi&quot;: argumento no-numérico para operador binario</code></pre>
-<pre class="r"><code>paste(&quot;Hi&quot;, 1) # Sometimes R functions are smart enough to `coerce` types automatically when possible. Neat!</code></pre>
-<pre><code>## [1] &quot;Hi 1&quot;</code></pre>
 <p><strong>Order of evaluation</strong> Be careful if you changt type or
 value of a variable. Don’t short-circuit your code. Options: 1. save as
 new variable or 2. always run code sequentially.</p>
-<pre class="r"><code>x &lt;- 1
-x + 2</code></pre>
-<pre><code>## [1] 3</code></pre>
-<pre class="r"><code>x &lt;- &quot;&quot;
-x + 2 # x is no longer numeric</code></pre>
-<pre><code>## Error in x + 2: argumento no-numérico para operador binario</code></pre>
-</div>
 </div>
 <div id="vectors" class="section level3">
 <h3>Vectors</h3>
 <p>A “vector” is a list of values that, importantly, are of the same
 type. This is the most common data type in R.</p>
-<pre class="r"><code>v1 &lt;- c() # Empty vector
-v2 &lt;- c(1) # Vector of length 1 and of type numeric
-v3 &lt;- c(&quot;Hello&quot;, &quot;World&quot;) # Vector of length 2 and of type character
-v4 &lt;- c(1, &quot;hi&quot;, TRUE, 1+2) # R is smart enough to coerce the type of all element into one that can be applied to all of them -- in this case, character, designated by &quot; marks.
-print(v4)</code></pre>
-<pre><code>## [1] &quot;1&quot;    &quot;hi&quot;   &quot;TRUE&quot; &quot;3&quot;</code></pre>
 <p>Vectors have some specific properties that you can call pretty
 handily with built-in functions.</p>
-<pre class="r"><code># prints the type of elements contained within vector
-typeof(v4)</code></pre>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<pre class="r"><code># Prints the length of the vector
-length(v4)</code></pre>
-<pre><code>## [1] 4</code></pre>
-<p>Concatenate vectors</p>
-<pre class="r"><code>v5 &lt;- c(v3, v4)
-print(v5)</code></pre>
-<pre><code>## [1] &quot;Hello&quot; &quot;World&quot; &quot;1&quot;     &quot;hi&quot;    &quot;TRUE&quot;  &quot;3&quot;</code></pre>
-<p>Vector arithmetic</p>
-<pre class="r"><code>x &lt;- c(1, 2, 3, 4)
-x * 2</code></pre>
-<pre><code>## [1] 2 4 6 8</code></pre>
-<p>Vector recycling (can skip this)</p>
-<pre class="r"><code>y &lt;- c(5, 6, 7)
-x + y</code></pre>
-<pre><code>## Warning in x + y: longitud de objeto mayor no es múltiplo de la longitud de uno
-## menor</code></pre>
-<pre><code>## [1]  6  8 10  9</code></pre>
-<p>Common statistical functions</p>
-<pre class="r"><code>sum(x)</code></pre>
-<pre><code>## [1] 10</code></pre>
-<pre class="r"><code>min(x)</code></pre>
-<pre><code>## [1] 1</code></pre>
-<pre class="r"><code>max(x)</code></pre>
-<pre><code>## [1] 4</code></pre>
-<pre class="r"><code>mean(x)</code></pre>
-<pre><code>## [1] 2.5</code></pre>
-<pre class="r"><code>median(x)</code></pre>
-<pre><code>## [1] 2.5</code></pre>
-<pre class="r"><code>sd(x)</code></pre>
-<pre><code>## [1] 1.290994</code></pre>
-<pre class="r"><code>summary(x)</code></pre>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##    1.00    1.75    2.50    2.50    3.25    4.00</code></pre>
-<p>Indexing vectors R uses the 1-based indexing system, meaning the
-first element begins at 1. (Python, for example, is a zero-based
-indexing system.)</p>
-<pre class="r"><code>x</code></pre>
-<pre><code>## [1] 1 2 3 4</code></pre>
-<pre class="r"><code>x[1] # obtain the first element</code></pre>
-<pre><code>## [1] 1</code></pre>
-<pre class="r"><code>x[-1] # obtain all but first element</code></pre>
-<pre><code>## [1] 2 3 4</code></pre>
-<pre class="r"><code>x[-2] # all but second element</code></pre>
-<pre><code>## [1] 1 3 4</code></pre>
-<pre class="r"><code>x[3:4] # 3rd-4th elements</code></pre>
-<pre><code>## [1] 3 4</code></pre>
-<pre class="r"><code>x[4:1] # reverse order</code></pre>
-<pre><code>## [1] 4 3 2 1</code></pre>
-<pre class="r"><code>rev(x)</code></pre>
-<pre><code>## [1] 4 3 2 1</code></pre>
-<pre class="r"><code>x[1:length(x)-1] # exclude last element, flexible for any vector</code></pre>
-<pre><code>## [1] 1 2 3</code></pre>
-<pre class="r"><code>x[c(TRUE,FALSE,TRUE,TRUE)] # exclude second element</code></pre>
-<pre><code>## [1] 1 3 4</code></pre>
-<p>Use indexing to manipulate content of the vector.</p>
-<pre class="r"><code>y &lt;- c(5, 6, 7)
-y</code></pre>
-<pre><code>## [1] 5 6 7</code></pre>
-<pre class="r"><code>y[2] &lt;- 1999
-y</code></pre>
-<pre><code>## [1]    5 1999    7</code></pre>
-<p>Get indexes using <code>which()</code></p>
-<pre class="r"><code>x &gt;= 2</code></pre>
-<pre><code>## [1] FALSE  TRUE  TRUE  TRUE</code></pre>
-<pre class="r"><code>which(x &gt;= 2)</code></pre>
-<pre><code>## [1] 2 3 4</code></pre>
 <div id="exercise" class="section level5">
 <h5>Exercise</h5>
 <p>Use what you learned about vector to return a vector containing
@@ -661,9 +450,6 @@ elements within <code>a</code> that is <strong>greater</strong> than
 30.</p>
 <pre class="r"><code>a &lt;- runif(20, 1, 100)</code></pre>
 <p>Answer</p>
-<pre class="r"><code>a[a &gt; 30]</code></pre>
-<pre><code>##  [1] 84.21834 45.40244 91.30445 85.66898 80.65645 56.17610 57.00221 92.65141
-##  [9] 66.60369 72.76724 33.11976 41.49245 35.91485 80.86700</code></pre>
 </div>
 </div>
 <div id="list" class="section level3">
@@ -671,77 +457,6 @@ elements within <code>a</code> that is <strong>greater</strong> than
 <p>List is a more flexible data type than vector - it can contain a
 mixture elements of various data types. We’ll breeze through this really
 quickly.</p>
-<p>Creating a list</p>
-<pre class="r"><code>my_list &lt;- list(&quot;Hello&quot;, 1, TRUE) # Mixed types of element
-print(my_list)</code></pre>
-<pre><code>## [[1]]
-## [1] &quot;Hello&quot;
-## 
-## [[2]]
-## [1] 1
-## 
-## [[3]]
-## [1] TRUE</code></pre>
-<p>Size of list</p>
-<pre class="r"><code>length(my_list)</code></pre>
-<pre><code>## [1] 3</code></pre>
-<p>Indexing a list using <code>[[]]</code></p>
-<pre class="r"><code>my_list[[1]]</code></pre>
-<pre><code>## [1] &quot;Hello&quot;</code></pre>
-<p>Appending a list, list can even contain vector</p>
-<pre class="r"><code>my_list[[5]] &lt;- 1:10
-my_list</code></pre>
-<pre><code>## [[1]]
-## [1] &quot;Hello&quot;
-## 
-## [[2]]
-## [1] 1
-## 
-## [[3]]
-## [1] TRUE
-## 
-## [[4]]
-## NULL
-## 
-## [[5]]
-##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<p>Indexing</p>
-<pre class="r"><code>my_list[[5]][7]</code></pre>
-<pre><code>## [1] 7</code></pre>
-<p>A list within a list</p>
-<pre class="r"><code>my_list[[4]] &lt;- list(&quot;World&quot;)
-my_list</code></pre>
-<pre><code>## [[1]]
-## [1] &quot;Hello&quot;
-## 
-## [[2]]
-## [1] 1
-## 
-## [[3]]
-## [1] TRUE
-## 
-## [[4]]
-## [[4]][[1]]
-## [1] &quot;World&quot;
-## 
-## 
-## [[5]]
-##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<pre class="r"><code>my_list[[4]][[1]]</code></pre>
-<pre><code>## [1] &quot;World&quot;</code></pre>
-<p>Combining list</p>
-<pre class="r"><code>c(list(1, 2), list(x=3, y=4))</code></pre>
-<pre><code>## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 2
-## 
-## $x
-## [1] 3
-## 
-## $y
-## [1] 4</code></pre>
 </div>
 <div id="data-frame" class="section level3">
 <h3>Data Frame</h3>
@@ -753,274 +468,10 @@ other.</p>
 <p>Think of data frame as like a stack of vectors (each column). To be
 able to make sense of the data, we want to add column names to designate
 what the values mean.</p>
-<p>Creating a data frame</p>
-<pre class="r"><code>df &lt;- data.frame(1:5,
-                 6:10)
-df</code></pre>
-<pre><code>##   X1.5 X6.10
-## 1    1     6
-## 2    2     7
-## 3    3     8
-## 4    4     9
-## 5    5    10</code></pre>
-<pre class="r"><code>names(df)</code></pre>
-<pre><code>## [1] &quot;X1.5&quot;  &quot;X6.10&quot;</code></pre>
-<pre class="r"><code>names(df) &lt;- c(&quot;first.column&quot;, &quot;second.column&quot;)
-names(df) # Note how codes are evaluated line-by-line sequentially?</code></pre>
-<pre><code>## [1] &quot;first.column&quot;  &quot;second.column&quot;</code></pre>
-<p>Or you can add names when you create data frame.</p>
-<pre class="r"><code>df2 &lt;- data.frame(height = 100:105,
-                  weight = 120:125)
-df2</code></pre>
-<pre><code>##   height weight
-## 1    100    120
-## 2    101    121
-## 3    102    122
-## 4    103    123
-## 5    104    124
-## 6    105    125</code></pre>
 <p>You can think of a data frame as a specialized type of
 <code>list</code> (with constraints), where each vector is an element of
 the list. BUT the number of rows <strong>must</strong> be of the same
 length.</p>
-<pre class="r"><code>df3 &lt;- data.frame(height = 100:105,
-                  weight = 120:130)</code></pre>
-<pre><code>## Error in data.frame(height = 100:105, weight = 120:130): los argumentos implican un número diferente de filas: 6, 11</code></pre>
-<p>Data frame is a <strong>specialized</strong> list! It has many
-similarities with lists.</p>
-<pre class="r"><code>typeof(df)</code></pre>
-<pre><code>## [1] &quot;list&quot;</code></pre>
-<pre class="r"><code>class(df)</code></pre>
-<pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<p>Hence, can use list-related functions.</p>
-<pre class="r"><code>length(df)</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>df[[2]]</code></pre>
-<pre><code>## [1]  6  7  8  9 10</code></pre>
-<p>Properties of data frame</p>
-<pre class="r"><code>dim(df)</code></pre>
-<pre><code>## [1] 5 2</code></pre>
-<pre class="r"><code>ncol(df)</code></pre>
-<pre><code>## [1] 2</code></pre>
-<pre class="r"><code>nrow(df)</code></pre>
-<pre><code>## [1] 5</code></pre>
-<p>Indexing, extracting information from data frame</p>
-<pre class="r"><code>df[[1]] # Same as list</code></pre>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<pre class="r"><code>df$first.column # Most common way to do it</code></pre>
-<pre><code>## [1] 1 2 3 4 5</code></pre>
-<p>R data frames are row-based, meaning first index refers to the row
-number, then column number</p>
-<pre class="r"><code>df</code></pre>
-<pre><code>##   first.column second.column
-## 1            1             6
-## 2            2             7
-## 3            3             8
-## 4            4             9
-## 5            5            10</code></pre>
-<pre class="r"><code>df[1,2] # row 1, column 2</code></pre>
-<pre><code>## [1] 6</code></pre>
-<p>Or, you can call by column name, and index like a normal vector.</p>
-<pre class="r"><code>df$second.column[1]</code></pre>
-<pre><code>## [1] 6</code></pre>
-<p>Adding columns</p>
-<pre class="r"><code>df$third &lt;- 21:25
-fourth &lt;- runif(5, 10, 100)
-df$fourth &lt;- fourth
-df</code></pre>
-<pre><code>##   first.column second.column third   fourth
-## 1            1             6    21 87.27771
-## 2            2             7    22 93.57085
-## 3            3             8    23 78.54120
-## 4            4             9    24 64.87383
-## 5            5            10    25 74.79399</code></pre>
-<p>R has some built-in data frames that you can play with.</p>
-<pre class="r"><code>mtcars</code></pre>
-<pre><code>##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
-## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
-## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
-## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
-## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
-## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
-## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
-## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
-## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
-## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
-## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
-## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
-## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
-## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
-## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
-## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
-## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
-## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
-## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
-## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
-## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
-## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
-<pre class="r"><code>iris</code></pre>
-<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
-## 1            5.1         3.5          1.4         0.2     setosa
-## 2            4.9         3.0          1.4         0.2     setosa
-## 3            4.7         3.2          1.3         0.2     setosa
-## 4            4.6         3.1          1.5         0.2     setosa
-## 5            5.0         3.6          1.4         0.2     setosa
-## 6            5.4         3.9          1.7         0.4     setosa
-## 7            4.6         3.4          1.4         0.3     setosa
-## 8            5.0         3.4          1.5         0.2     setosa
-## 9            4.4         2.9          1.4         0.2     setosa
-## 10           4.9         3.1          1.5         0.1     setosa
-## 11           5.4         3.7          1.5         0.2     setosa
-## 12           4.8         3.4          1.6         0.2     setosa
-## 13           4.8         3.0          1.4         0.1     setosa
-## 14           4.3         3.0          1.1         0.1     setosa
-## 15           5.8         4.0          1.2         0.2     setosa
-## 16           5.7         4.4          1.5         0.4     setosa
-## 17           5.4         3.9          1.3         0.4     setosa
-## 18           5.1         3.5          1.4         0.3     setosa
-## 19           5.7         3.8          1.7         0.3     setosa
-## 20           5.1         3.8          1.5         0.3     setosa
-## 21           5.4         3.4          1.7         0.2     setosa
-## 22           5.1         3.7          1.5         0.4     setosa
-## 23           4.6         3.6          1.0         0.2     setosa
-## 24           5.1         3.3          1.7         0.5     setosa
-## 25           4.8         3.4          1.9         0.2     setosa
-## 26           5.0         3.0          1.6         0.2     setosa
-## 27           5.0         3.4          1.6         0.4     setosa
-## 28           5.2         3.5          1.5         0.2     setosa
-## 29           5.2         3.4          1.4         0.2     setosa
-## 30           4.7         3.2          1.6         0.2     setosa
-## 31           4.8         3.1          1.6         0.2     setosa
-## 32           5.4         3.4          1.5         0.4     setosa
-## 33           5.2         4.1          1.5         0.1     setosa
-## 34           5.5         4.2          1.4         0.2     setosa
-## 35           4.9         3.1          1.5         0.2     setosa
-## 36           5.0         3.2          1.2         0.2     setosa
-## 37           5.5         3.5          1.3         0.2     setosa
-## 38           4.9         3.6          1.4         0.1     setosa
-## 39           4.4         3.0          1.3         0.2     setosa
-## 40           5.1         3.4          1.5         0.2     setosa
-## 41           5.0         3.5          1.3         0.3     setosa
-## 42           4.5         2.3          1.3         0.3     setosa
-## 43           4.4         3.2          1.3         0.2     setosa
-## 44           5.0         3.5          1.6         0.6     setosa
-## 45           5.1         3.8          1.9         0.4     setosa
-## 46           4.8         3.0          1.4         0.3     setosa
-## 47           5.1         3.8          1.6         0.2     setosa
-## 48           4.6         3.2          1.4         0.2     setosa
-## 49           5.3         3.7          1.5         0.2     setosa
-## 50           5.0         3.3          1.4         0.2     setosa
-## 51           7.0         3.2          4.7         1.4 versicolor
-## 52           6.4         3.2          4.5         1.5 versicolor
-## 53           6.9         3.1          4.9         1.5 versicolor
-## 54           5.5         2.3          4.0         1.3 versicolor
-## 55           6.5         2.8          4.6         1.5 versicolor
-## 56           5.7         2.8          4.5         1.3 versicolor
-## 57           6.3         3.3          4.7         1.6 versicolor
-## 58           4.9         2.4          3.3         1.0 versicolor
-## 59           6.6         2.9          4.6         1.3 versicolor
-## 60           5.2         2.7          3.9         1.4 versicolor
-## 61           5.0         2.0          3.5         1.0 versicolor
-## 62           5.9         3.0          4.2         1.5 versicolor
-## 63           6.0         2.2          4.0         1.0 versicolor
-## 64           6.1         2.9          4.7         1.4 versicolor
-## 65           5.6         2.9          3.6         1.3 versicolor
-## 66           6.7         3.1          4.4         1.4 versicolor
-## 67           5.6         3.0          4.5         1.5 versicolor
-## 68           5.8         2.7          4.1         1.0 versicolor
-## 69           6.2         2.2          4.5         1.5 versicolor
-## 70           5.6         2.5          3.9         1.1 versicolor
-## 71           5.9         3.2          4.8         1.8 versicolor
-## 72           6.1         2.8          4.0         1.3 versicolor
-## 73           6.3         2.5          4.9         1.5 versicolor
-## 74           6.1         2.8          4.7         1.2 versicolor
-## 75           6.4         2.9          4.3         1.3 versicolor
-## 76           6.6         3.0          4.4         1.4 versicolor
-## 77           6.8         2.8          4.8         1.4 versicolor
-## 78           6.7         3.0          5.0         1.7 versicolor
-## 79           6.0         2.9          4.5         1.5 versicolor
-## 80           5.7         2.6          3.5         1.0 versicolor
-## 81           5.5         2.4          3.8         1.1 versicolor
-## 82           5.5         2.4          3.7         1.0 versicolor
-## 83           5.8         2.7          3.9         1.2 versicolor
-## 84           6.0         2.7          5.1         1.6 versicolor
-## 85           5.4         3.0          4.5         1.5 versicolor
-## 86           6.0         3.4          4.5         1.6 versicolor
-## 87           6.7         3.1          4.7         1.5 versicolor
-## 88           6.3         2.3          4.4         1.3 versicolor
-## 89           5.6         3.0          4.1         1.3 versicolor
-## 90           5.5         2.5          4.0         1.3 versicolor
-## 91           5.5         2.6          4.4         1.2 versicolor
-## 92           6.1         3.0          4.6         1.4 versicolor
-## 93           5.8         2.6          4.0         1.2 versicolor
-## 94           5.0         2.3          3.3         1.0 versicolor
-## 95           5.6         2.7          4.2         1.3 versicolor
-## 96           5.7         3.0          4.2         1.2 versicolor
-## 97           5.7         2.9          4.2         1.3 versicolor
-## 98           6.2         2.9          4.3         1.3 versicolor
-## 99           5.1         2.5          3.0         1.1 versicolor
-## 100          5.7         2.8          4.1         1.3 versicolor
-## 101          6.3         3.3          6.0         2.5  virginica
-## 102          5.8         2.7          5.1         1.9  virginica
-## 103          7.1         3.0          5.9         2.1  virginica
-## 104          6.3         2.9          5.6         1.8  virginica
-## 105          6.5         3.0          5.8         2.2  virginica
-## 106          7.6         3.0          6.6         2.1  virginica
-## 107          4.9         2.5          4.5         1.7  virginica
-## 108          7.3         2.9          6.3         1.8  virginica
-## 109          6.7         2.5          5.8         1.8  virginica
-## 110          7.2         3.6          6.1         2.5  virginica
-## 111          6.5         3.2          5.1         2.0  virginica
-## 112          6.4         2.7          5.3         1.9  virginica
-## 113          6.8         3.0          5.5         2.1  virginica
-## 114          5.7         2.5          5.0         2.0  virginica
-## 115          5.8         2.8          5.1         2.4  virginica
-## 116          6.4         3.2          5.3         2.3  virginica
-## 117          6.5         3.0          5.5         1.8  virginica
-## 118          7.7         3.8          6.7         2.2  virginica
-## 119          7.7         2.6          6.9         2.3  virginica
-## 120          6.0         2.2          5.0         1.5  virginica
-## 121          6.9         3.2          5.7         2.3  virginica
-## 122          5.6         2.8          4.9         2.0  virginica
-## 123          7.7         2.8          6.7         2.0  virginica
-## 124          6.3         2.7          4.9         1.8  virginica
-## 125          6.7         3.3          5.7         2.1  virginica
-## 126          7.2         3.2          6.0         1.8  virginica
-## 127          6.2         2.8          4.8         1.8  virginica
-## 128          6.1         3.0          4.9         1.8  virginica
-## 129          6.4         2.8          5.6         2.1  virginica
-## 130          7.2         3.0          5.8         1.6  virginica
-## 131          7.4         2.8          6.1         1.9  virginica
-## 132          7.9         3.8          6.4         2.0  virginica
-## 133          6.4         2.8          5.6         2.2  virginica
-## 134          6.3         2.8          5.1         1.5  virginica
-## 135          6.1         2.6          5.6         1.4  virginica
-## 136          7.7         3.0          6.1         2.3  virginica
-## 137          6.3         3.4          5.6         2.4  virginica
-## 138          6.4         3.1          5.5         1.8  virginica
-## 139          6.0         3.0          4.8         1.8  virginica
-## 140          6.9         3.1          5.4         2.1  virginica
-## 141          6.7         3.1          5.6         2.4  virginica
-## 142          6.9         3.1          5.1         2.3  virginica
-## 143          5.8         2.7          5.1         1.9  virginica
-## 144          6.8         3.2          5.9         2.3  virginica
-## 145          6.7         3.3          5.7         2.5  virginica
-## 146          6.7         3.0          5.2         2.3  virginica
-## 147          6.3         2.5          5.0         1.9  virginica
-## 148          6.5         3.0          5.2         2.0  virginica
-## 149          6.2         3.4          5.4         2.3  virginica
-## 150          5.9         3.0          5.1         1.8  virginica</code></pre>
 </div>
 <div id="tibble" class="section level3">
 <h3>Tibble</h3>
@@ -1032,97 +483,11 @@ because any Tidyverse’s <code>readr</code> function would output a
 <code>tibble</code> by default. Don’t worry about the differences - they
 are, for the most parts, interchangeable.</p>
 <p>You can convert a preexisting data frame into a tibble.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.4.2</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.4     
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre class="r"><code>my_tib &lt;- as_tibble(mtcars) # Converting a data frame to tibble
-my_tib # looks very similar to data frame</code></pre>
-<pre><code>## # A tibble: 32 × 11
-##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
-##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
-##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
-##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
-##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
-##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
-##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
-##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
-##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
-## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-## # ℹ 22 more rows</code></pre>
 <p>Another way to create a tibble. Key components are column names and
 values. Each column can only contain one data type.</p>
-<pre class="r"><code>my_tib2 &lt;- tibble(name = c(&quot;Josh&quot;, &quot;Peter&quot;),
-                  income = c(100000000, 20))
-my_tib2</code></pre>
-<pre><code>## # A tibble: 2 × 2
-##   name     income
-##   &lt;chr&gt;     &lt;dbl&gt;
-## 1 Josh  100000000
-## 2 Peter        20</code></pre>
 <p>Conventionally, for data frames and tibbles, each row contains
 observations, each column contains variables, and each cell contains
 values.</p>
-<pre class="r"><code>my_tib</code></pre>
-<pre><code>## # A tibble: 32 × 11
-##      mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-##  1  21       6  160    110  3.9   2.62  16.5     0     1     4     4
-##  2  21       6  160    110  3.9   2.88  17.0     0     1     4     4
-##  3  22.8     4  108     93  3.85  2.32  18.6     1     1     4     1
-##  4  21.4     6  258    110  3.08  3.22  19.4     1     0     3     1
-##  5  18.7     8  360    175  3.15  3.44  17.0     0     0     3     2
-##  6  18.1     6  225    105  2.76  3.46  20.2     1     0     3     1
-##  7  14.3     8  360    245  3.21  3.57  15.8     0     0     3     4
-##  8  24.4     4  147.    62  3.69  3.19  20       1     0     4     2
-##  9  22.8     4  141.    95  3.92  3.15  22.9     1     0     4     2
-## 10  19.2     6  168.   123  3.92  3.44  18.3     1     0     4     4
-## # ℹ 22 more rows</code></pre>
-<p>Subsetting, same as data frame</p>
-<pre class="r"><code>tb &lt;- tibble(
-  x = runif(5),
-  y = rnorm(5))
-# Extract by name 1
-tb$x</code></pre>
-<pre><code>## [1] 0.6803385 0.1472817 0.8491264 0.2349304 0.5084432</code></pre>
-<pre class="r"><code># Extract by name 2
-tb[[&quot;x&quot;]]</code></pre>
-<pre><code>## [1] 0.6803385 0.1472817 0.8491264 0.2349304 0.5084432</code></pre>
-<pre class="r"><code># Extract by column index 1
-tb[[1]]</code></pre>
-<pre><code>## [1] 0.6803385 0.1472817 0.8491264 0.2349304 0.5084432</code></pre>
-<pre class="r"><code># If have time, example of differences between data frame vs tibble
-mtcars[,1]</code></pre>
-<pre><code>##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
-## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
-## [31] 15.0 21.4</code></pre>
-<pre class="r"><code>as_tibble(mtcars)[,1]</code></pre>
-<pre><code>## # A tibble: 32 × 1
-##      mpg
-##    &lt;dbl&gt;
-##  1  21  
-##  2  21  
-##  3  22.8
-##  4  21.4
-##  5  18.7
-##  6  18.1
-##  7  14.3
-##  8  24.4
-##  9  22.8
-## 10  19.2
-## # ℹ 22 more rows</code></pre>
-<pre class="r"><code>class(tb)</code></pre>
-<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 </div>
 </div>
 <div id="tidyverse" class="section level2">

@@ -1,0 +1,156 @@
+---
+title: "UPGG Bootcamp 2025"
+author: "Erick Figueroa-Ildefonso"
+output: html_document
+date: "2025-08-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Data structure
+
+### Refresher on Data Types
+
+We will do a quick review on data types in R. These are basically categories of values that computers can read and interpret in different ways. If you know other programming languages, these categories tend to overlap, though might have different
+names.
+
+### Numeric
+
+Basically, numbers that we know very well. You can perform mathematical operations on them. The
+types of numeric values you are going to encounter the most are:
+
+1a. `Double` - represent real numbers (whole numbers and decimals). It is the default value for
+whole numbers.
+
+1b. `Integer` - represent whole numbers only.
+
+Whole numbers are defaulted to `double`. You have to tell R explicitly that a value is `integer`.
+
+You are unlikely to come across a case where `double` and `integer` will make significant changes to
+your code/performance, but it's good to be aware of the different types of numeric values. Another
+key point is that, arithmetic operation will automatically coerce `integer` to `double` if needs be.
+
+**Valid variable names** There are some names you ***can't*** use as variable names, and they are
+names that you ***shouldn't*** use.
+
+1.  Start with letter
+
+2.  Don't use weird symbols, use `.` or `_`.
+
+    Examples of style guides:
+
+    -   [Google's](https://google.github.io/styleguide/Rguide.xml)
+
+    -   [Jean Fan's](http://jef.works/R-style-guide/)
+
+    -   [Tidyverse's](http://style.tidyverse.org/)
+
+3.  **DO NOT** use [reserved
+    words](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
+
+4.  Avoid naming variables the same as function names
+
+### Logical
+
+Sometimes these values are called `boolean` in other languages. It is common enough in programming
+that you should know about! The only possible logical values are `TRUE` and `FALSE` -- case
+sensitive!!!
+
+> **Problem with numeric data in logical equivalence**
+
+Without going into the weed, an irrational number like `sqrt(10)` has infinite decimal points. So,
+it is impossible for R to represent all the digits as it would take an infinite amount of storage. R
+has a limited degree of `precision` that it can represent an irrational value, which makes the term
+`(sqrt(10)^2)` slightly off from 10.
+
+To circumvent this limitation, you can test for "near equality" in R using a function `all.equal()`.
+
+**Logical operator**
+
+### Character strings
+
+Characters are created by using the `"` (double quote) or `'` (single quote) enclosing them.
+
+`nchar()` gives you the number of characters in the variable.
+
+Simple strings operations - joining strings using `paste()` and `paste0()` and splitting strings
+using `strsplit()`.
+* `paste()` automatically includes a **separator** (default being a space)
+* `paste0()` doesn't include a separator
+
+***Check whether or not they know how to see possible options for a function***
+
+You cannot combine two data types.
+
+**Order of evaluation** Be careful if you changt type or value of a variable. Don't short-circuit
+your code. Options: 1. save as new variable or 2. always run code sequentially.
+
+### Vectors
+
+A "vector" is a list of values that, importantly, are of the same type. This is the most common data
+type in R.
+
+Vectors have some specific properties that you can call pretty handily with built-in functions.
+
+##### Exercise
+
+Use what you learned about vector to return a vector containing elements within `a` that is
+**greater** than 30.
+
+```{r}
+a <- runif(20, 1, 100)
+```
+
+Answer
+
+### List
+
+List is a more flexible data type than vector - it can contain a mixture elements of various data
+types. We'll breeze through this really quickly.
+
+
+### Data Frame
+
+This is arguably the most useful feature of R in data analyses. There's a reason we use
+spreadsheets, they portray multi-dimentional data and its relational information between data points
+across columns -- i.e., putting variables from the same observation next to each other.
+
+Think of data frame as like a stack of vectors (each column). To be able to make sense of the data,
+we want to add column names to designate what the values mean.
+
+You can think of a data frame as a specialized type of `list` (with constraints), where each vector
+is an element of the list. BUT the number of rows **must** be of the same length.
+
+### Tibble
+
+A `tibble` is a Tidyverse's attempt to improve on `data frame`. In general, `data frame` and `tibble` are about equivalent
+in terms of function. For the sake of today and tomorrow's lesson, we'll use `tibble` because any Tidyverse's
+`readr` function would output a `tibble` by default. Don't worry about the differences - they are,
+for the most parts, interchangeable.
+
+You can convert a preexisting data frame into a tibble.
+
+Another way to create a tibble. Key components are column names and values. Each column can only
+contain one data type.
+
+
+Conventionally, for data frames and tibbles, each row contains observations, each column contains
+variables, and each cell contains values.
+
+
+
+## Tidyverse
+
+What is [Tidyverse](https://www.tidyverse.org/)? Tidyverse is a collection of R packages that had
+been designed and developed for data science. R is not a new language, and Tidyverse's philosophy is
+about reducing redundancy and improving coding style to be cleaner and more intuitive.
+
+Tidyverse is a literal gold mine, and there's no way we're going to cover everything in just a few
+hours! We're going to go through a few functions that are particularly useful and most commonly
+used.
+
+
+
