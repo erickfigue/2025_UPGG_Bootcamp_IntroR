@@ -81,11 +81,10 @@ using `strsplit()`.
 * `paste()` automatically includes a **separator** (default being a space)
 * `paste0()` doesn't include a separator
 
-***Check whether or not they know how to see possible options for a function***
 
 You cannot combine two data types.
 
-**Order of evaluation** Be careful if you changt type or value of a variable. Don't short-circuit
+**Order of evaluation** Be careful if you change type or value of a variable. Don't short-circuit
 your code. Options: 1. save as new variable or 2. always run code sequentially.
 
 ### Vectors
